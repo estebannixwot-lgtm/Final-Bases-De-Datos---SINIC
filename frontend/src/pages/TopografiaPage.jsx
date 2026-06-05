@@ -70,7 +70,7 @@ const TopografiaPage = () => {
       </div>
 
       <div className="map-container" style={{zIndex: 0}}>
-        <MapContainer center={[10, 10]} zoom={6} scrollWheelZoom={false} style={{height: '100%', width: '100%'}}>
+        <MapContainer center={[4.63, -74.11]} zoom={13} scrollWheelZoom={false} style={{height: '100%', width: '100%'}}>
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
             attribution='&copy; <a href="https://carto.com/">CARTO</a>'

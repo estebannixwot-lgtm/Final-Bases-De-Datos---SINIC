@@ -1,9 +1,9 @@
 const pool = require('./backend/db');
 
-async function fixUrl() {
+async function fixData() {
     try {
-        await pool.query("UPDATE cartografia_referencia SET url_recurso = 'https://www.colombiaenmapas.gov.co/' WHERE id = 1");
-        console.log("URL de ortofoto corregida exitosamente a Colombia en Mapas.");
+        await pool.query("DELETE FROM lc_terreno_construccion WHERE id = 1;");
+        console.log("Poligono de Africa (Dummy) eliminado.");
     } catch (err) {
         console.error("Error:", err);
     } finally {
@@ -11,4 +11,4 @@ async function fixUrl() {
     }
 }
 
-fixUrl();
+fixData();
