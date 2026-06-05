@@ -1,0 +1,38 @@
+erDiagram
+    ba_unidad {
+        serial id PK
+        varchar tipo_derecho
+        numeric area_registral
+        date fecha_registro
+    }
+    lc_terreno_construccion {
+        serial id PK
+        integer ba_unidad_id FK
+        varchar tipo
+        numeric area_calculada
+        geometry geom "POLYGON, 9377"
+    }
+    lc_interesado {
+        serial id PK
+        integer ba_unidad_id FK
+        varchar tipo_documento
+        varchar numero_documento
+        varchar nombre_completo
+    }
+    lc_punto_levantamiento {
+        serial id PK
+        integer ba_unidad_id FK
+        varchar tipo_punto
+        geometry geom "POINT, 9377"
+    }
+    cartografia_referencia {
+        serial id PK
+        varchar nombre_mapa
+        date fecha_vuelo
+        varchar url_recurso
+    }
+
+    ba_unidad ||--o{ lc_terreno_construccion : "tiene"
+    ba_unidad ||--|{ lc_interesado : "asociado a"
+    ba_unidad ||--o{ lc_punto_levantamiento : "levantado con"
+    cartografia_referencia ||--o{ lc_terreno_construccion : "referencia"

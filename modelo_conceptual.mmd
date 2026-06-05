@@ -1,0 +1,35 @@
+classDiagram
+    class Unidad_Administrativa {
+        identificador
+        tipo_derecho
+        fecha_registro
+        area_registral
+    }
+    class Unidad_Espacial {
+        identificador
+        tipo (Terreno/Construccion)
+        area_calculada
+        geometria (Poligono)
+    }
+    class Interesado {
+        identificador
+        tipo_documento
+        numero_documento
+        nombre_completo
+    }
+    class Topografia_Representacion {
+        identificador
+        tipo_punto
+        geometria (Punto)
+    }
+    class Cartografia_Catastral {
+        identificador
+        nombre_mapa
+        fecha_vuelo
+        url_recurso
+    }
+
+    Unidad_Administrativa "1" *-- "1..*" Unidad_Espacial : se compone de
+    Unidad_Administrativa "1..*" -- "1..*" Interesado : tiene derecho sobre
+    Unidad_Espacial "1" -- "1..*" Topografia_Representacion : se delimita con
+    Unidad_Espacial "1..*" -- "1" Cartografia_Catastral : se referencia en

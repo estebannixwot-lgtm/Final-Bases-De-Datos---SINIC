@@ -1,0 +1,53 @@
+INFORME DE PROGRESO: PROYECTO FINAL BASES DE DATOS ESPACIALES
+Modelo de Aplicaci√≥n SINIC V1.0
+
+--------------------------------------------------------------------------------
+FECHA: 2026-06-05
+--------------------------------------------------------------------------------
+
+1. RECOPILACI√ìN Y AN√ÅLISIS DE REQUERIMIENTOS
+Se ha establecido el objetivo de crear una aplicaci√≥n web (Frontend y Backend) para la gesti√≥n de datos catastrales conforme al modelo de aplicaci√≥n SINIC V 1.0. 
+Los requerimientos t√©cnicos establecidos son:
+- Base de datos: PostgreSQL + PostGIS (Puerto: 5433).
+- Modelo simplificado: 5 CRUDs (Unidad Administrativa, Unidad Espacial, Interesados, Topograf√≠a y Representaci√≥n, Cartograf√≠a Catastral).
+- Visualizaci√≥n de datos espaciales en la interfaz mediante Leaflet.
+- Desarrollo en el directorio local C:\U 2026\FINAL BD y preparaci√≥n para despliegue en GitHub.
+- Generaci√≥n de Modelos L√≥gico y Conceptual en formato PDF.
+
+2. PREPARACI√ìN DEL ENTORNO DE TRABAJO
+Se inicia la exploraci√≥n del directorio de trabajo y se estructura el plan de tareas. Se crear√°n los siguientes componentes principales:
+- `backend`: API REST en Node.js para interactuar con la base de datos PostgreSQL.
+- `frontend`: Aplicaci√≥n en React (Vite) para consumir la API y proveer una interfaz de usuario interactiva y premium.
+- `documentacion`: Contendr√° los diagramas l√≥gicos y conceptuales generados.
+
+El esquema f√≠sico propuesto incluye las siguientes tablas fundamentales con soporte PostGIS (SRID 9377):
+- `ba_unidad`: Gesti√≥n de derechos (Unidad Administrativa).
+- `lc_terreno_construccion`: Geometr√≠as tipo POL√çGONO.
+- `lc_interesado`: Datos de personas naturales/jur√≠dicas.
+- `lc_punto_levantamiento`: Geometr√≠as tipo PUNTO.
+- `cartografia_referencia`: Informaci√≥n complementaria.
+
+Siguiente paso: Generar los modelos (Conceptual y L√≥gico) y crear la base de datos f√≠sica localmente.
+
+
+3. CONSTRUCCI”N DE LA BASE DE DATOS Y GENERACI”N DE MODELOS
+- Se implementÛ un esquema fÌsico simplificado en el script database_schema.sql.
+- Se utilizÛ un script en Python (create_pdf.py con ReportLab) para generar los modelos Conceptual y LÛgico en formato PDF.
+- Ambos PDFs han sido ubicados en el subdirectorio documentacion/.
+
+4. DESARROLLO DEL BACKEND
+- Se creÛ la carpeta backend/, inicializando un proyecto Node.js.
+- Se configurÛ la conexiÛn a PostgreSQL con PostGIS a travÈs de la librerÌa 'pg' y las credenciales proporcionadas (Puerto 5433).
+- Se crearon rutas RESTful para ejecutar las operaciones CRUD correspondientes a: ba_unidad, lc_terreno_construccion, lc_interesado, lc_punto_levantamiento, y cartografia_referencia.
+- El uso de la funciÛn ST_GeomFromText facilita la inserciÛn de geometrÌas espaciales, y ST_AsGeoJSON asegura que la interfaz consuma adecuadamente los mapas.
+
+5. DESARROLLO DEL FRONTEND
+- Se empleÛ Vite con React para construir el frontend (frontend/).
+- Se implementÛ un diseÒo moderno (index.css) usando 'Vanilla CSS' e inspiraciones Glassmorphism y temas oscuros con acentos azules vibrantes.
+- Se utilizaron las librerÌas Leaflet y react-leaflet para renderizar los mapas de las capas 'Unidad Espacial' (PolÌgonos) y 'TopografÌa' (Puntos).
+- Se crearon 5 p·ginas distintas, conectadas por react-router-dom, con modales intuitivos para las funciones de Crear y Editar.
+
+6. CIERRE Y VERIFICACI”N
+- La aplicaciÛn frontend y backend operan simult·neamente en modo local.
+- El directorio de trabajo fue inicializado con Git y se creÛ un README.md con instrucciones, dej·ndolo listo para su publicaciÛn en Github.
+- Proyecto completado exitosamente.
